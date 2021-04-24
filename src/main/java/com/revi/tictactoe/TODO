@@ -1,0 +1,37 @@
+        /*
+         just stuff that can be ignored >.>
+         checks if a player has set one mark too much
+        if (player1 > player2 + 1 || player2 > player1 + 1) {
+            System.out.println("Impossible.");
+        }
+         checks if a draw has been made
+        else if (player1 + player2 == 9) {
+            System.out.println("Draw");
+        }
+         prints the cell array
+         for (char[] cell : cells) {
+            System.out.println(Arrays.toString(cell));
+        }
+        */
+
+            public static void createCells(char[][] cells, String input, char[] players, int player1, int player2){
+
+                // assigns the given cells to the cell array which will function as board
+                int loop = 0;
+                if (!input.isEmpty())
+                    for (int i = 0; i < cells.length; i++) {
+                        for (int j = 0; j < cells[i].length; j++) {
+                            char cell = input.charAt(loop);
+                            switch (cell) {
+                                case 'X' -> player1++;
+                                case 'O' -> player2++;
+                            }
+                            if (cell == players[0] || cell == players[1])
+                                cells[i][j] = cell;
+                            else {
+                                cells[i][j] = ' ';
+                            }
+                            loop++;
+                        }
+                    }
+            }
