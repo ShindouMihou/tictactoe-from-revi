@@ -28,13 +28,13 @@ public class Main {
             System.out.println("--------------------------");
             Terminal.log("What do you want to do?");
             int option = Terminal.scanner.nextInt();
-            if(option == 1){
+            if (option == 1) {
                 Controller.changeSymbols().thenAccept(unused -> menuAction());
-            } else if(option == 2){
+            } else if (option == 2) {
                 new BoardController().startGame(false);
-            } else if(option == 3){
+            } else if (option == 3) {
                 new BoardController().startGame(true);
-            } else if(option == 4){
+            } else if (option == 4) {
                 Terminal.log("Thanks for playing!");
                 System.exit(1);
             }

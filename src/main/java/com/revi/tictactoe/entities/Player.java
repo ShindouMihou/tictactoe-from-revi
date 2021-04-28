@@ -9,12 +9,12 @@ public class Player {
         this.symbol = symbol;
     }
 
-    public Player(char symbol, boolean bot){
+    public Player(char symbol, boolean bot) {
         this.symbol = symbol;
         this.bot = bot;
     }
 
-    public boolean isBot(){
+    public boolean isBot() {
         return bot;
     }
 
