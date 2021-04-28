@@ -2,19 +2,28 @@ package com.revi.tictactoe.entities;
 
 import com.revi.tictactoe.controllers.PlayerManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 
-    //creates the boards array
-    private final char[][] cells = {
-            {'¹', '²', '³'},
-            {'⁴', '⁵', '⁶'},
-            {'⁷', '⁸', '⁹'}
-    };
+    private final char[][] cells;
 
-    private static final char[] unoccupied = {'¹', '²', '³', '⁴', '⁵', '⁶', '⁷', '⁸', '⁹'};
+    private final char[] unoccupied = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+
+    public Board(){
+        this.cells = new char[][]{
+            {'1', '2', '3'},
+            {'4', '5', '6'},
+            {'7', '8', '9'}};
+    }
+
+    public Board(char[][] cells){
+        this.cells = cells;
+    }
 
     public void updateCell(int row, int column, char cell) {
-        cells[column][row] = cell;
+        this.cells[column][row] = cell;
     }
 
     public boolean isOccupied(int row, int column) {
@@ -22,16 +31,22 @@ public class Board {
     }
 
     public boolean isFull() {
-        // As much as I want to avoid multiple inner loops, it is too time-consuming to find a way for that.
-        int y = 0;
+        return getFree().isEmpty();
+    }
+
+    public List<Integer> getFree() {
+        List<Integer> a = new ArrayList<>();
         for (char[] cell : cells) {
             for (char value : cell) {
                 for (char c : unoccupied) {
-                    y = value == c ? y + 1 : y;
+                    if (value == c) {
+                        a.add(Integer.parseInt(Character.toString(c)));
+                    }
                 }
             }
         }
-        return y == 0;
+
+        return a;
     }
 
     public char[][] getCells() {
